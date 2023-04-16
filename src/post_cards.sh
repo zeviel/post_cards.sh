@@ -5,6 +5,7 @@ sign=null
 vk_user_id=null
 vk_ts=null
 vk_ref=null
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36"
 
 function authenticate() {
 	# 1 - sign: (string): <sign>
@@ -28,7 +29,7 @@ function authenticate() {
 function app_initialize() {
 	curl --request GET \
 		--url "$api/initialize" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $params" 
 }
@@ -36,7 +37,7 @@ function app_initialize() {
 function get_categories() {
 	curl --request GET \
 		--url "$api/categories" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $params" 
 }
@@ -48,7 +49,7 @@ function get_post_cards() {
 	# 4 - ASC: (integer): <ASC - default: 1>
 	curl --request GET \
 		--url "$api/postcards?offset=${1:-0}&limit=${2:-15}&orderBy=${3:-cost}&ASC=${5:-1}" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $params" 
 }
@@ -56,7 +57,7 @@ function get_post_cards() {
 function get_orders() {
 	curl --request GET \
 		--url "$api/orders" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $params" 
 }
@@ -65,7 +66,7 @@ function review_post_card() {
 	# 1 - post_card_id: (integer): <post_card_id>
 	curl --request GET \
 		--url "$api/reviews/$1" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $params" 
 }
